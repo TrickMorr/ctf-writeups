@@ -4,7 +4,7 @@ A collection of my ctf challenge solutions and writups, organized by platform
 
 ## My General Approach - Use of AI
 
-My general approach is to let my curiosity guide me, rather than my desire to "finish" the challenge.
+I like to believe that I let my curiosity guide me, rather than my desire to "finish" the challenge.
 
 I approach CTFs as learning exercises.
 
@@ -27,7 +27,7 @@ A few years ago I would have had to skim multiple blog posts, articles, etc. Now
 
 There are rare occasions when I'm in the mood to pursue a more "purist" route of classic web search and content skimming.
 
-There is definitely a discussion to be had about the value of manually skimming a lot of semi-related content that isn't necessarily exactly what one is looking for, but that discussion is for another time and place.
+There is definitely a discussion to be had about the value of manually skimming a lot of semi-related content that isn't necessarily exactly what one is looking for and how that contributes to the learning process. But for the most part, I like to find the answers specific to the questions I'm asking, so I use the tools available.
 
 
 
