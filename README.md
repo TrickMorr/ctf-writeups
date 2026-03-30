@@ -11,7 +11,9 @@ I use AI tools as a teacher walking me through the exercise.
 My general approach is to let my curiosity guide me, rather than my desire to "finish" the challenge.
 
 
+
 I don't like feeling like I just pressed a "solve the challenge" button so I treat the AI like a teacher who is showing me how to do it, and it's my responsibility to follow along and ask questions relevant to my understanding.
+
 
 
 I will have AI generate blocks of code, and ask the AI to break down what the code is doing. 
@@ -27,9 +29,10 @@ There is definitely a discussion to be had about the value of manually skimming 
 
 
 ### Things I usually ask the AI:
--how did you know to do that
--how could a ctf participant reasonably be expected to know to do that
--how can I recognize this in the future
+
+- how did you know to do that
+- how could a ctf participant reasonably be expected to know to do that
+- how can I recognize this in the future
 
 
 ## License
