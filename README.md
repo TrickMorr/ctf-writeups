@@ -12,14 +12,14 @@ I treat AI tools like they're a teacher walking me through the exercise. It's my
 
 ### Things I usually ask the AI:
 
-- how did you know to do that
-- how could a ctf participant reasonably be expected to know to do that
-- how can I recognize this in the future
+- how did you know to do that?
+- how could a ctf participant reasonably be expected to know to do that?
+- how can I recognize this in the future?
 
 ### Writing code
-I am most familiar with Python, and I've written my own code before.
+I am most familiar with the Python coding language. The Python course was one of my favorite parts of my degree program. I've written my own code before.
 
-Now, I will have AI generate code, and ask the AI to break down what the code is doing. 
+That being said, for most CTF processes, I will have AI generate code, and ask the AI to break down what the code is doing. 
 
 ### Philosophy
 
