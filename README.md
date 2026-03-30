@@ -8,16 +8,9 @@ I approach CTFs as learning exercises.
 
 I use AI tools as a teacher walking me through the exercise.
 
-My general approach is to let my curiosity guide me, rather than my desire to "finish" the challenge.
-
-
-
-I don't like feeling like I just pressed a "solve the challenge" button so I treat the AI like a teacher who is showing me how to do it, and it's my responsibility to follow along and ask questions relevant to my understanding.
-
-
-
 I will have AI generate blocks of code, and ask the AI to break down what the code is doing. 
 
+My general approach is to let my curiosity guide me, rather than my desire to "finish" the challenge.
 
 I'm coming at it as a noob who has never seen any of this before. I won't know this stuff until I learn it.
 
