@@ -8,7 +8,7 @@ I like to believe that I let my curiosity guide me, rather than my desire to "fi
 
 I approach CTFs as learning exercises.
 
-I use AI tools as a teacher walking me through the exercise. It's my reponsibility to follow along and ask questions relevant to my understanding.
+I treat AI tools like they're a teacher walking me through the exercise. It's my reponsibility to follow along and ask questions relevant to my understanding.
 
 ### Things I usually ask the AI:
 
