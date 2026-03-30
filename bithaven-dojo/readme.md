@@ -1,7 +1,7 @@
 # BitHaven Dojo
 
-bithaven-dojo/
-├── README.md             
+bithaven-dojo/  
+├── README.md               
 ├── dont-look-down
 
 Bit Haven is a hackerspace in the Tri-Main building in Buffalo, NY.
