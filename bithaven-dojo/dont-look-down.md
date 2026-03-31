@@ -7,7 +7,15 @@ Author: dfoo
 
 Title: Don't Look Down  
 Text: No really, don't.  
-Content: noyjsbrm}ej-+m44fx+TPY+ej4m+U-i+v5m+kIdy+dj2gy|
+Content: noyjsbrm}ej-+m44fx+TPY+ej4m+U-i+v5m+kIdy+dj2gy|  
+
+---
+### Solution path:
+
+[dcode cipher identifier](https://www.dcode.fr/cipher-identifier) > keyboard shift > flag
+
+---
+### My process:  
 
 This was one of my very first CTFs ever attempted. I had no idea where to begin.  
 So it was a huge hint when the challenge author pointed me to the website: [dcode](https://www.dcode.fr/en). 
