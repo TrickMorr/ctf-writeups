@@ -13,7 +13,7 @@ This was one of my very first CTFs ever attempted. I had no idea where to begin.
 So it was a huge hint when the challenge author pointed me to the website: [dcode](https://www.dcode.fr/en). 
 Specifically, the [cipher identifier](https://www.dcode.fr/cipher-identifier)
 
-The cipher identifier is now bookmarked in my browser and one of the first places I visit when I encounter what looks like a cipher. I've since learned to incorporate other tools as well, namely [cyberchef](https://cyberchef.org/) but I prefer to try the dcode cipher identifier before I visit cyberchef.
+The cipher identifier is now bookmarked in my browser and one of the first places I visit when I encounter what looks like encoded data. I've since learned to incorporate other tools as well, namely [cyberchef](https://cyberchef.org/) but I prefer to try the dcode cipher identifier before I visit cyberchef.
 
 Pasting the text into the cipher identifier, however, doesn't give us a very strong positive match for any cipher in particular. 
 The top results in the left pane all have only a little bit of green in the reliability meter.
