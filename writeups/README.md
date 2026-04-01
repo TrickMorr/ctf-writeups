@@ -2,7 +2,7 @@
 
 A collection of my ctf challenge solutions and writups, organized by platform
 
-## My General Approach / On the Use of AI
+## My Approach / On the Use of AI
 
 I like to believe that I let my curiosity guide me, rather than my desire to "finish" the challenge.
 
