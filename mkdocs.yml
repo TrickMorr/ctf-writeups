@@ -1,0 +1,17 @@
+site_name: CTF Writeups
+docs_dir: writeups
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: teal
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+
+plugins:
+  - search
+  - tags
