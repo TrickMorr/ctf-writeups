@@ -622,6 +622,47 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#solution-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution Path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#my-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        My Process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lessons Learned
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -645,34 +686,34 @@ Author: Yahaya Meddy  </p>
 <p>Title:<br />
 ping-cmd<br />
 Text:<br />
-Can you make the server reveal its secrets? It seems to be able to ping Google DNS, but what happens if you get a little creative with your input? You can connect to the service here 'nc mysterious-sea.picoctf.net  <port number>'  </p>
+Can you make the server reveal its secrets? It seems to be able to ping Google DNS, but what happens if you get a little creative with your input? You can connect to the service here <code>nc mysterious-sea.picoctf.net  &lt;port number&gt;</code>  </p>
 <hr />
-<h1 id="solution-path">Solution Path</h1>
+<h3 id="solution-path">Solution Path</h3>
 <p>command injection:<br />
-use the approved ip address '8.8.8.8' followed by a semi-colon ';', after which you can inject an additional command: 'cat flag.txt'.<br />
-'8.8.8.8; cat flag.txt'  </p>
+use the approved ip address <code>8.8.8.8</code> followed by a semi-colon <code>;</code>, after which you can inject an additional command: <code>cat flag.txt</code>.<br />
+<code>8.8.8.8; cat flag.txt</code>  </p>
 <hr />
-<h1 id="my-process">My Process</h1>
+<h3 id="my-process">My Process</h3>
 <p>I opened a terminal in Kali Linux and pasted the command I had copied from the challenge description:<br />
-'nc mysterious-sea.picoctf.net  <port number>'<br />
-(where '<port number>' is a number that will change depending on the challenge instance)  </p>
+<code>nc mysterious-sea.picoctf.net  &lt;port number&gt;</code><br />
+(where <code>&lt;port number&gt;</code> is a number that will change depending on the challenge instance)  </p>
 <p>Then I saw the prompt:<br />
-'Enter an IP address to ping! (We have tight security because we only allow '8.8.8.8'):'  </p>
-<p>So I tried '8.8.8.8' and it pinged successfully and then closed the connection.  </p>
-<p>Then I connected again and tried '127.0.0.1' which pinged successfully and closed the connection.<br />
+<code>Enter an IP address to ping! (We have tight security because we only allow</code>8.8.8.8<code>):</code>  </p>
+<p>So I tried <code>8.8.8.8</code> and it pinged successfully and then closed the connection.  </p>
+<p>Then I connected again and tried <code>127.0.0.1</code> which pinged successfully and closed the connection.<br />
 So much for being clever.  </p>
 <p>At that point, I was out of ideas, so I asked perplexity.ai about the challenge and it said something along the lines of:<br />
-"This is a classic command injection" and suggested attaching commands to the accepted IP address with a semi-colon ';'.  </p>
-<p>I've used the Linux CLI before. The use of the semi-colon was familiar to me and seemed like an obvious thing to try once it was suggested.  </p>
+"This is a classic command injection" and suggested attaching commands to the accepted IP address with a semi-colon <code>;</code>.  </p>
+<p>I`ve used the Linux CLI before. The use of the semi-colon was familiar to me and seemed like an obvious thing to try once it was suggested.  </p>
 <p>So first I tried:<br />
-'8.8.8.8; ls'</p>
-<p>and saw the ping succeed, followed by a list of files, one of which was 'flag.txt'  </p>
+<code>8.8.8.8; ls</code></p>
+<p>and saw the ping succeed, followed by a list of files, one of which was <code>flag.txt</code>  </p>
 <p>So the next move seemed obvious:  </p>
-<p>'8.8.8.8; cat flag.txt'  </p>
+<p><code>8.8.8.8; cat flag.txt</code>  </p>
 <p>...and <em>voila</em>  </p>
 <p><img alt="screenshot of cli solution" src="assets/ping-cmd-solution-cli.png" /></p>
 <hr />
-<h1 id="lessons-learned">Lessons Learned</h1>
+<h3 id="lessons-learned">Lessons Learned</h3>
 <ul>
 <li>when you have a legitimate command that is accepted, try injecting your own commands along with it</li>
 <li>using a semi-colon is a simple way to chain an additional commmand on to the first command</li>
