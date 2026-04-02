@@ -1,3 +1,9 @@
+---
+title: All your base are belong to us  
+tags:  
+  - Misc
+---
+
 # All your base are belong to us  
 Category: Misc  
 Points: 100  
