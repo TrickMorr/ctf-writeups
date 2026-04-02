@@ -250,13 +250,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../picoCTF/ping-cmd/" class="md-tabs__link">
+        <a href="../../picoctf/ping-cmd/" class="md-tabs__link">
           
   
   
     
   
-  picoCTF
+  Picoctf
 
         </a>
       </li>
@@ -596,7 +596,7 @@
   <span class="md-ellipsis">
     
   
-    picoCTF
+    Picoctf
   
 
     
@@ -612,7 +612,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    picoCTF
+    Picoctf
   
 
           </label>
@@ -648,7 +648,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../picoCTF/ping-cmd/" class="md-nav__link ">
+            <a href="../../picoctf/ping-cmd/" class="md-nav__link ">
               
   
   
@@ -806,18 +806,18 @@ Then, <a href="https://www.better-converter.com/Encoders-Decoders/Base65536-Deco
 That result was identified as Base32. Repeat.</p>
 <p>Here's where things started to get a little muddy. The Base32 decoded string was identified, with relatively high reliability, as Base92. Base92 decoding, however, resulted in an error.  </p>
 <p><img width="1068" height="626" alt="Screenshot 2026-03-31 144926" src="https://github.com/user-attachments/assets/217d5b9c-358b-434f-b7e6-7bd2eca857b0" />  </p>
-<p>This is where I started kind of flailing around a little, trying different settings on the Base92 decoding page, and generally getting thrown off by the high reliability reported on the Base92 identification. Note the second place identified encoding here, though.</p>
+<p>This is where I started kind of flailing around a little, trying different settings on the Base92 decoding page, and generally getting thrown off by the high reliability reported on the Base92 identification. Note the second place identified encoding in the image below: ASCII85. This will come up again later.</p>
 <p><img width="1050" height="243" alt="Screenshot 2026-03-31 153219" src="https://github.com/user-attachments/assets/dc384b11-c3e7-4b00-9442-407bea96cc8e" />  </p>
-<p>I went back and read the challenge text again, and calculated 2^16 as 65536. So I looked up a Base65536 decoder, since dcode didn't appear to have it, and cyber chef didn't have it, and found one <a href="https://www.better-converter.com/Encoders-Decoders/Base65536-Decode">here</a>.</p>
+<p>Being kind of stuck and needing a hint, I went back and read the challenge text again, and calculated 2^16 as 65536. So I looked up a Base65536 decoder, since dcode didn't appear to have it, and cyber chef didn't have it, and found one <a href="https://www.better-converter.com/Encoders-Decoders/Base65536-Decode">here</a>.</p>
 <p>I have since discovered that dcode does indeed have a Base65536 decoding tool, but I had not found it yet via the cipher identifier, because, unbeknownst to me, I didn't have a Base65536 encoded string to be identified yet.</p>
-<p>Regardless, I put the string I had gotten from the Base32 decoding into the Base65536 decoder, and got an error about invalid characters.</p>
+<p>Not knowing this, I put the string I had gotten from the Base32 decoding into the Base65536 decoder, and got an error about invalid characters.</p>
 <p>This then had me going on to Cyberchef and playing around with the output encoding feature on the results pane, which can come in handy sometimes now that I've learned to try it out. But I kept running into dead ends.</p>
 <p>I followed the decoding path from the beginning a few more times, always getting thrown off after the Base32 decoding. I messed around in Cyberchef with the output encoding and kept pasting results into the Base65536 decoder and getting errors.</p>
 <p>As with many solutions, I finally got lucky after trying a lot of different things and feeling bad about how none of them worked.</p>
 <p>What finally worked: Pasting the Base32 string (the Base58 decoded result that was identified as Base32) into Cyberchef, choosing "from Base32" and then clicking the magic wand icon that appeared. </p>
 <p><img width="1653" height="615" alt="Screenshot 2026-03-31 150754" src="https://github.com/user-attachments/assets/1acbeb11-541e-48cf-89de-1f69468db682" />  </p>
 <p>It looks like Cyberchef recognized an additional layer of what it calls Base85. Alternatively, as you may have noticed in the reliability screenshot posted earlier, ASCII85 was identified as the second most likely encoding for the Base32 decoded string, and if I had clicked through and tried ASCII85 in dcode, I would have gotten the same result I got from Cyberchef.</p>
-<p>The Cyberchef magic wand result gave me a string of characters that had no errors or missing character symbols, but which was still not a recognizable flag. If I had done some research into what Base65536 looks like, I might have felt good about the kinds of characters I was seeing, but at the time, I had no idea what Base65536 was. It wasn't until I pasted that string into the Base65536 decoder that I realized I'd finally hit the jackpot.</p>
+<p>The Cyberchef magic wand result gave me a string of characters that had no errors or missing character symbols, but which was still not a recognizable flag. If I had done some research into what Base65536 looks like, I might have felt good about the kinds of characters I was seeing, but at the time, I had no idea what Base65536 was. It wasn't until I pasted that string into the Base65536 decoder and clicked 'DECODE' that I realized I'd finally hit the jackpot.</p>
 <p><img width="784" height="808" alt="Screenshot 2026-03-31 151034" src="https://github.com/user-attachments/assets/89b69ff9-be69-48d5-867b-8e4de55bc40b" /></p>
 
 
