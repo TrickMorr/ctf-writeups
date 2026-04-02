@@ -1,3 +1,8 @@
+---
+title: ping-cmd
+tags:
+  - Misc / General Skills
+---
 # ping-cmd
 
 Category: General Skills  

@@ -1,7 +1,7 @@
 ---
 title: All your base are belong to us  
 tags:  
-  - Misc
+  - Misc / General Skills
 ---
 
 # All your base are belong to us  
