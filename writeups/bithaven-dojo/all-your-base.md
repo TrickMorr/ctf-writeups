@@ -57,15 +57,15 @@ Here's where things started to get a little muddy. The Base32 decoded string was
 
 <img width="1068" height="626" alt="Screenshot 2026-03-31 144926" src="https://github.com/user-attachments/assets/217d5b9c-358b-434f-b7e6-7bd2eca857b0" />  
 
-This is where I started kind of flailing around a little, trying different settings on the Base92 decoding page, and generally getting thrown off by the high reliability reported on the Base92 identification. Note the second place identified encoding here, though.
+This is where I started kind of flailing around a little, trying different settings on the Base92 decoding page, and generally getting thrown off by the high reliability reported on the Base92 identification. Note the second place identified encoding in the image below: ASCII85. This will come up again later.
 
 <img width="1050" height="243" alt="Screenshot 2026-03-31 153219" src="https://github.com/user-attachments/assets/dc384b11-c3e7-4b00-9442-407bea96cc8e" />  
 
-I went back and read the challenge text again, and calculated 2^16 as 65536. So I looked up a Base65536 decoder, since dcode didn't appear to have it, and cyber chef didn't have it, and found one [here](https://www.better-converter.com/Encoders-Decoders/Base65536-Decode).
+Being kind of stuck and needing a hint, I went back and read the challenge text again, and calculated 2^16 as 65536. So I looked up a Base65536 decoder, since dcode didn't appear to have it, and cyber chef didn't have it, and found one [here](https://www.better-converter.com/Encoders-Decoders/Base65536-Decode).
 
 I have since discovered that dcode does indeed have a Base65536 decoding tool, but I had not found it yet via the cipher identifier, because, unbeknownst to me, I didn't have a Base65536 encoded string to be identified yet.
 
-Regardless, I put the string I had gotten from the Base32 decoding into the Base65536 decoder, and got an error about invalid characters.
+Not knowing this, I put the string I had gotten from the Base32 decoding into the Base65536 decoder, and got an error about invalid characters.
 
 This then had me going on to Cyberchef and playing around with the output encoding feature on the results pane, which can come in handy sometimes now that I've learned to try it out. But I kept running into dead ends.
 
@@ -79,6 +79,6 @@ What finally worked: Pasting the Base32 string (the Base58 decoded result that w
 
 It looks like Cyberchef recognized an additional layer of what it calls Base85. Alternatively, as you may have noticed in the reliability screenshot posted earlier, ASCII85 was identified as the second most likely encoding for the Base32 decoded string, and if I had clicked through and tried ASCII85 in dcode, I would have gotten the same result I got from Cyberchef.
 
-The Cyberchef magic wand result gave me a string of characters that had no errors or missing character symbols, but which was still not a recognizable flag. If I had done some research into what Base65536 looks like, I might have felt good about the kinds of characters I was seeing, but at the time, I had no idea what Base65536 was. It wasn't until I pasted that string into the Base65536 decoder that I realized I'd finally hit the jackpot.
+The Cyberchef magic wand result gave me a string of characters that had no errors or missing character symbols, but which was still not a recognizable flag. If I had done some research into what Base65536 looks like, I might have felt good about the kinds of characters I was seeing, but at the time, I had no idea what Base65536 was. It wasn't until I pasted that string into the Base65536 decoder and clicked 'DECODE' that I realized I'd finally hit the jackpot.
 
 <img width="784" height="808" alt="Screenshot 2026-03-31 151034" src="https://github.com/user-attachments/assets/89b69ff9-be69-48d5-867b-8e4de55bc40b" />
