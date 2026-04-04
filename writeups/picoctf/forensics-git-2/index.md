@@ -35,7 +35,7 @@ Hints: 1
 
 ### My Process
 
-I used perplexity.ai to help me out on this one. I followed along every step of the way but I'm still working on understand the very last command that got the flag.
+I used perplexity.ai to help me out on this one, then solidified my understanding of the process, especially the final command, while creating this writeup.
 
 But let's start at the beginning.
 
