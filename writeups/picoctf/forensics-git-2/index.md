@@ -178,10 +178,10 @@ done | grep -i pico
 The command incorporates `git cat-file` and a while loop. Here's a breakdown:
 
 - `find` all regular files in .git/objects, same as above.
-- Pipe each file name to a `sed` command which substitutes with `s`. So `s|.git/objects||` effectively deletes '.git/objects' from each file path by finding it and replacing it with the nothing between `||`. The remaining `/` is removed in the same way, leaving the full hash value.
-- `while read hash` is the while loop, which says that while it can read a hash value result piped from the sed command into a variable named `hash` (could be named anything) it should `do` the next thing.
-- The `do` part of the loop uses `git cat-file` to read the data defined by the hash value contained in the variable `$hash` while `-p` says to print the data in a human-readable format, or "pretty-print", and pipe it into the final grep section. (The `2>/dev/null`, again, just bypasses any permissions errors so the results aren't cluttered)
-- Finally, the `grep -i pico` looks for anything matching the string 'pico', the `-i` means case-insensitive.
+- Pipe each file name to a `sed` command which substitutes with `s`. So `s|.git/objects/||` effectively deletes '.git/objects/' from each file path by finding it and replacing it with the nothing between `||`. The remaining `/` is removed in the same way, leaving the full hash value.
+- `while read hash` is the while loop, which reads the whole chunk of input line by line into a variable, here named 'hash'. Each line/variable is fed to the `do` part one by one until there are no more lines.
+- The `do` part of the loop uses `git cat-file` to cat the file the hash value variable `$hash` points to. `-p` says to print the data in a human-readable format, or "pretty-print", and pipe it into the final grep section. (The `2>/dev/null`, again, just bypasses any permissions errors so the results aren't cluttered)
+- Finally, the `grep -i pico` looks for anything matching the string 'pico'. The `-i` makes the match case-insensitive.
 
 There is only one line which contains the string 'pico':
 
