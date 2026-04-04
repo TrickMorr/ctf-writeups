@@ -149,7 +149,8 @@ notice: HEAD points to an unborn branch (master)
 notice: No default references
 ```
 
-The command `git fsck` is borrowing the Unix naming convention for the command initiating a filesystem check: `fsck` and applies a check to the git object store.  
+The command `git fsck` is borrowing the Unix naming convention for the command initiating a filesystem check: `fsck` and applies a check to the git object store.
+
 - It starts from all known references — branch pointers, tags, HEAD, the reflog, etc.  
 - It walks the object graph forward from those references, following every commit → tree → blob chain it can reach.  
 - Any object file sitting in .git/objects/ that was never reached during that walk is reported as dangling/unreferenced. Here, nothing was found from the very beginning of the object graph, so there is no list of dangling/unreferenced files. The complete lack of any references means that the files we found above are, indeed, orphaned.  
@@ -160,7 +161,8 @@ The data in these files is just sitting there ready to read, but it's compressed
 
 So we need to take the list of files that we have above, and one by one, remove the `.git/objects/` and the `/` in the middle of the hash. This is done with a `sed` command, as seen below.
 
-The final command shown below incorporates `git cat-file` and a while loop:  
+The final command shown below incorporates `git cat-file` and a while loop:
+
 - `find` all regular files in .git/objects, same as above.
 - Pipe each file name to a `sed` command which substitutes with `s`. So `s|.git/objects||` effectively deletes '.git/objects' from each file path like this: `s|find '.git/objects'|replace with ''`. The remaining `/` is removed in the same way, leaving the full hash value.
 - `while read hash` is the while loop, which says that while it can read a hash value result piped from the sed command into a variable named `hash` (could be named anything) it should `do` the next thing.
