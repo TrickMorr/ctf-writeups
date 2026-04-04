@@ -958,10 +958,10 @@ done | grep -i pico
 <p>The command incorporates <code>git cat-file</code> and a while loop. Here's a breakdown:</p>
 <ul>
 <li><code>find</code> all regular files in .git/objects, same as above.</li>
-<li>Pipe each file name to a <code>sed</code> command which substitutes with <code>s</code>. So <code>s|.git/objects||</code> effectively deletes '.git/objects' from each file path by finding it and replacing it with the nothing between <code>||</code>. The remaining <code>/</code> is removed in the same way, leaving the full hash value.</li>
-<li><code>while read hash</code> is the while loop, which says that while it can read a hash value result piped from the sed command into a variable named <code>hash</code> (could be named anything) it should <code>do</code> the next thing.</li>
-<li>The <code>do</code> part of the loop uses <code>git cat-file</code> to read the data defined by the hash value contained in the variable <code>$hash</code> while <code>-p</code> says to print the data in a human-readable format, or "pretty-print", and pipe it into the final grep section. (The <code>2&gt;/dev/null</code>, again, just bypasses any permissions errors so the results aren't cluttered)</li>
-<li>Finally, the <code>grep -i pico</code> looks for anything matching the string 'pico', the <code>-i</code> means case-insensitive.</li>
+<li>Pipe each file name to a <code>sed</code> command which substitutes with <code>s</code>. So <code>s|.git/objects/||</code> effectively deletes '.git/objects/' from each file path by finding it and replacing it with the nothing between <code>||</code>. The remaining <code>/</code> is removed in the same way, leaving the full hash value.</li>
+<li><code>while read hash</code> is the while loop, which reads the whole chunk of input line by line into a variable, here named 'hash'. Each line/variable is fed to the <code>do</code> part one by one until there are no more lines.</li>
+<li>The <code>do</code> part of the loop uses <code>git cat-file</code> to cat the file the hash value variable <code>$hash</code> points to. <code>-p</code> says to print the data in a human-readable format, or "pretty-print", and pipe it into the final grep section. (The <code>2&gt;/dev/null</code>, again, just bypasses any permissions errors so the results aren't cluttered)</li>
+<li>Finally, the <code>grep -i pico</code> looks for anything matching the string 'pico'. The <code>-i</code> makes the match case-insensitive.</li>
 </ul>
 <p>There is only one line which contains the string 'pico':</p>
 <pre><code>┌──(kali㉿kali)-[/mnt/…/home/ctf-player/Code/killer-chat-app]
