@@ -768,10 +768,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#git-object-files-and-reading-the-files" class="md-nav__link">
+  <a href="#reading-git-object-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Git object files and reading the files
+        Reading Git object files
       
     </span>
   </a>
@@ -943,14 +943,22 @@ notice: No default references
 <li>It walks the object graph forward from those references, following every commit → tree → blob chain it can reach.  </li>
 <li>Any object file sitting in .git/objects/ that was never reached during that walk is reported as dangling/unreferenced. Here, nothing was found from the very beginning of the object graph, so there is no list of dangling/unreferenced files. The complete lack of any references means that the files we found above are, indeed, orphaned.  </li>
 </ul>
-<h3 id="git-object-files-and-reading-the-files">Git object files and reading the files</h3>
-<p>The files found in .git/objects are created by Git, containing whatever data that was going to be saved. The file path and name are auto-created by Git, using a SHA-1 hash of the file data, split into the first 2 digits being a directory, and the remaining digits the file name.<br />
-The data in these files is just sitting there ready to read, but it's compressed and wrapped by Git in a particular way, so it's simplest to use Git to read them with <code>git cat-file</code>. HOWEVER, <code>git cat-file</code> doesn't take a regular file path like many commands we are used to. Instead, it takes the full 40 character SHA-1 hash, for somme reason.</p>
-<p>So we need to take the list of files that we have above, and one by one, remove the <code>.git/objects/</code> and the <code>/</code> in the middle of the hash. This is done with a <code>sed</code> command, as seen below.</p>
-<p>The final command shown below incorporates <code>git cat-file</code> and a while loop:</p>
+<h3 id="reading-git-object-files">Reading Git object files</h3>
+<p>The files found in .git/objects are created by Git, containing whatever data that was staged and committed.</p>
+<p>The data in these files is relatively easy to access, but it’s unreadable as it is. Git creates a header and compresses the data in a particular way.</p>
+<p>The file path and name are auto-created by Git. It does this by hashing the file data and header, and using the first 2 characters as the directory, and the remaining 38 characters as the file name.</p>
+<p>Normally, we wouldn't be accessing these object files directly, Git does that on the backend. However, when necessary, we can read these object files with <code>git cat-file</code>, which does all the decompression and parsing of the Git header for us. </p>
+<p>HOWEVER, <code>git cat-file</code> doesn't take a regular file path like many commands we are used to. Instead, it takes the full 40 character SHA-1 hash</p>
+<p>So we need to take the list of files that we have above, and one by one, remove the <code>.git/objects/</code> and the <code>/</code> in the middle of the hash. This can be done with a <code>sed</code> command, as seen below.</p>
+<p>The final command:  </p>
+<pre><code>find .git/objects -type f | sed 's|.git/objects/||;s|/||' | while read hash; do
+    git cat-file -p $hash 2&gt;/dev/null
+done | grep -i pico
+</code></pre>
+<p>incorporates <code>git cat-file</code> and a while loop:</p>
 <ul>
 <li><code>find</code> all regular files in .git/objects, same as above.</li>
-<li>Pipe each file name to a <code>sed</code> command which substitutes with <code>s</code>. So <code>s|.git/objects||</code> effectively deletes '.git/objects' from each file path like this: <code>s|find '.git/objects'|replace with ''</code>. The remaining <code>/</code> is removed in the same way, leaving the full hash value.</li>
+<li>Pipe each file name to a <code>sed</code> command which substitutes with <code>s</code>. So <code>s|.git/objects||</code> effectively deletes '.git/objects' from each file path like this: "s|find '.git/objects'|replace with ''|". The remaining <code>/</code> is removed in the same way, leaving the full hash value.</li>
 <li><code>while read hash</code> is the while loop, which says that while it can read a hash value result piped from the sed command into a variable named <code>hash</code> (could be named anything) it should <code>do</code> the next thing.</li>
 <li>The <code>do</code> part of the loop uses <code>git cat-file</code> to read the data defined by the hash value contained in the variable <code>$hash</code> while <code>-p</code> says to print the data in a human-readable format, or "pretty-print", and pipe it into the final grep section. (The <code>2&gt;/dev/null</code>, again, just bypasses any permissions errors so the results aren't cluttered)</li>
 <li>Finally, the <code>grep -i pico</code> looks for anything matching the string 'pico', the <code>-i</code> means case-insensitive.</li>
