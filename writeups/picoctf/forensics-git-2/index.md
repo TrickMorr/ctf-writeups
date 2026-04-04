@@ -167,7 +167,7 @@ Normally, we wouldn't be accessing these object files directly, Git does that on
 
 HOWEVER, `git cat-file` doesn't take a regular file path like many commands we are used to. Instead, it takes the full 40 character SHA-1 hash
 
-So we need to take the list of files that we have above, and one by one, remove the `.git/objects/` and the `/` in the middle of the hash. This can be done with a `sed` command, as seen below.
+So we need to take the list of files that we have above, and one by one, remove  `.git/objects/` and the `/` in the middle of the hash. This can be done with a `sed` command, as seen below.
 
 The final command:  
 ```
@@ -175,10 +175,10 @@ find .git/objects -type f | sed 's|.git/objects/||;s|/||' | while read hash; do
     git cat-file -p $hash 2>/dev/null
 done | grep -i pico
 ```
-incorporates `git cat-file` and a while loop:
+The command incorporates `git cat-file` and a while loop. Here's a breakdown:
 
 - `find` all regular files in .git/objects, same as above.
-- Pipe each file name to a `sed` command which substitutes with `s`. So `s|.git/objects||` effectively deletes '.git/objects' from each file path like this: "s|find '.git/objects'|replace with ''|". The remaining `/` is removed in the same way, leaving the full hash value.
+- Pipe each file name to a `sed` command which substitutes with `s`. So `s|.git/objects||` effectively deletes '.git/objects' from each file path by finding it and replacing it with the nothing between `||`. The remaining `/` is removed in the same way, leaving the full hash value.
 - `while read hash` is the while loop, which says that while it can read a hash value result piped from the sed command into a variable named `hash` (could be named anything) it should `do` the next thing.
 - The `do` part of the loop uses `git cat-file` to read the data defined by the hash value contained in the variable `$hash` while `-p` says to print the data in a human-readable format, or "pretty-print", and pipe it into the final grep section. (The `2>/dev/null`, again, just bypasses any permissions errors so the results aren't cluttered)
 - Finally, the `grep -i pico` looks for anything matching the string 'pico', the `-i` means case-insensitive.
