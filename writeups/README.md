@@ -4,13 +4,17 @@ A collection of my CTF challenge solutions and writups, organized by platform
 
 ## CTF?
 
-CTF means "Capture The Flag" and in cybersecurity/hacking context it generally means a challenge in which the participant is supposed to solve some sort of cybersecurity-related puzzle, usually involving finding vulnerabilities and ways to exploit them in order to get access to certain information. In CTFs, the information we're trying to access is represented by a "flag", which is usually a single-line of text consisting of a semi-random string of alphanumeric characters. Finding the flag is meant to demonstrate that the participant has a working knowledge in the security concepts involved.
+CTF means "Capture The Flag".
+
+In cybersecurity/hacking context it generally means a challenge in which the participant is supposed to solve some sort of cybersecurity-related puzzle, usually involving finding vulnerabilities and ways to exploit them in order to get access to certain information.
+
+In CTFs, the information we're trying to access is represented by a "flag", which is usually a single-line of text consisting of a semi-random string of alphanumeric characters. Finding the flag is meant to demonstrate that the participant has a working knowledge in the security concepts involved.
 
 ## My Path
 
-I started attempting CTFs soon after earning a bachelor's degree in Cybersecurity, and after becoming involved in a local community hackerspace(See "BitHaven Dojo"), where I found enough encouragment and guidance to feel comfortable with trying something new and honestly somewhat intimidating.
+I started attempting CTFs soon after earning a bachelor's degree in Cybersecurity, and after becoming involved in a local community hackerspace(See "BitHaven Dojo"), where I found enough encouragment and guidance to feel comfortable with trying something new and intimidating.
 
-There is, in my experience, quite a steep learning curve in doing CTFs. Many of the challenges one might encounter assume the participant has a certain level of general experience with CTFs, if not specific experience with the concepts of the challenge itself. It can be a difficult for absolute beginners to find challenges built for their level of experience. It meant a lot for me to have access to people who could help me get acclimated to some of the foundational concepts of CTFs.
+There is, in my experience, quite a steep learning curve in the very beginning of doing CTFs. Even many of the "beginner" challenges assume the participant has a certain level of general experience with CTFs, if not specific experience with the concepts of the challenge itself. It can be a difficult for absolute beginners to find challenges built for their level of experience. It meant a lot for me to have access to people who could help me get acclimated to some of the foundational concepts of CTFs.
 
 ## My Approach / On the Use of AI
 
